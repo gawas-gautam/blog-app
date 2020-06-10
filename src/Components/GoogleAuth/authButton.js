@@ -1,17 +1,16 @@
 import React from "react";
 
+// can be used for other authentication types too
 const AuthButton = ({state, onSignOutClick, onSignInClick}) => {
-    console.log(state,'state', onSignInClick, '2', onSignOutClick)
+    console.log(state,'state')
     if (state.isSignedIn === 'null') {
-        return <div>no idea</div>
+        return <div>Loading...</div>
     }
     else if (state.isSignedIn) {
-        return <button data-testid="authButton" className="btn btn-danger" onClick={onSignOutClick}>Sign out</button>
-
+    return <button data-testid="authButton" className="btn btn-danger" onClick={onSignOutClick}>{state.label.signOut}</button>
     } else {
-        return <button data-testid="authButton" className="btn btn-danger" onClick={onSignInClick}><i className="fa fa-google"></i> Sign in with <b>Google</b></button>
+    return <button data-testid="authButton" className="btn btn-danger" onClick={onSignInClick}><i className="fa fa-google"></i>{state.label.signIn}</button>
     }
-
 }
 
 export default AuthButton;
